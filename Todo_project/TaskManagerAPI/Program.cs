@@ -1,3 +1,14 @@
+//dotnet add package BCrypt.Net-Next
+//dotnet add package System.IdentityModel.Tokens.Jwt
+//dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+//dotnet add package Microsoft.EntityFrameworkCore.Design
+//dotnet ef migrations add InitialCreate
+//dotnet ef database update
+
+
+
+
+
 using TaskManagerAPI.Data;
 using Microsoft.EntityFrameworkCore;
 
