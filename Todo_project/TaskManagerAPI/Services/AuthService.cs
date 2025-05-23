@@ -19,6 +19,17 @@ namespace TaskManagerAPI.Services
             return await _context.Users.AnyAsync(u => u.Username == username);
         }
 
+        public async Task<List<User>> GetAllUsersAsync()
+        {
+            return await _context.Users
+                .Select(u => new User { 
+                    Id = u.Id, 
+                    Username = u.Username 
+                    // passwordHash pole lisatud turvalisuse pärast
+                })
+                .ToListAsync();
+        }
+
         public string HashPassword(string password)
         {
             return BCrypt.Net.BCrypt.HashPassword(password);

@@ -11,6 +11,7 @@
 
 using TaskManagerAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using TaskManagerAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,15 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
+
+builder.Services.AddScoped<AuthService>(); // This requires AppDbContext
+builder.Services.AddScoped<JwtService>();
+builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+
+builder.Services.Configure<RouteOptions>(options =>
+{
+    options.LowercaseUrls = true;  // Now /api/auth/users will work
+});
 
 builder.Services.AddCors(options =>
 {
@@ -31,7 +41,19 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
 var app = builder.Build();
+app.UseRouting(); // Add this if not present
 app.UseCors("AllowFrontend");
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();  // Access UI at /swagger
+}
 
 app.Run();
