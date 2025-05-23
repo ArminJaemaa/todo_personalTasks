@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import axios from 'axios';
 import BackButton from '../Components/Tagasi';
 
@@ -7,7 +7,7 @@ function SignUp() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:5265/api/Auth/register', {

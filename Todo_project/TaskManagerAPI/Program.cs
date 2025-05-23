@@ -21,13 +21,13 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
-builder.Services.AddScoped<AuthService>(); // This requires AppDbContext
+builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<JwtService>();
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
 builder.Services.Configure<RouteOptions>(options =>
 {
-    options.LowercaseUrls = true;  // Now /api/auth/users will work
+    options.LowercaseUrls = true; // URL kõik väikeste tähtedega
 });
 
 builder.Services.AddCors(options =>
@@ -44,7 +44,7 @@ builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
-app.UseRouting(); // Add this if not present
+app.UseRouting();
 app.UseCors("AllowFrontend");
 app.UseAuthentication();
 app.UseAuthorization();
