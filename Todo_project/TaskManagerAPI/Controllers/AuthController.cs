@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TaskManagerAPI.Data;
 using TaskManagerAPI.Models;
 using TaskManagerAPI.Services;
 
@@ -11,6 +13,7 @@ namespace TaskManagerAPI.Controllers
         private readonly AuthService _authService;
         private readonly JwtService _jwtService;
 
+
         public AuthController(AuthService authService, JwtService jwtService)
         {
             _authService = authService;
@@ -18,12 +21,12 @@ namespace TaskManagerAPI.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(RegisterModel model)
+        public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
             var user = await _authService.RegisterAsync(model.Username, model.Password);
             if (user == null)
                 return BadRequest("Username already exists.");
-            return Ok(new { user.Id, user.Username });
+            return Ok(new { user.Id });
         }
 
         [HttpPost("login")]
@@ -35,6 +38,14 @@ namespace TaskManagerAPI.Controllers
 
             var token = _jwtService.GenerateToken(user);
             return Ok(new { token });
+        }
+        
+        //[Authorize(Roles = "Admin")]
+        [HttpGet("users")]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var users = await _authService.GetAllUsersAsync();
+            return Ok(users);
         }
     }
 }
