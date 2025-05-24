@@ -19,6 +19,7 @@ function Login() {
       setToken(recivedToken);
       localStorage.setItem('JwtToken', recivedToken);
       alert('Login successful');
+      
     } catch (err){
       setError('Invalid username or password')
       console.log(err);

@@ -144,4 +144,4 @@
 /Users/arminjaemaa/Documents/GitHub/toto_personalTasks/Todo_project/TaskManagerAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /Users/arminjaemaa/Documents/GitHub/toto_personalTasks/Todo_project/TaskManagerAPI/bin/Debug/net9.0/Microsoft.IdentityModel.Protocols.dll
 /Users/arminjaemaa/Documents/GitHub/toto_personalTasks/Todo_project/TaskManagerAPI/bin/Debug/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-/Users/arminjaemaa/Documents/GitHub/toto_personalTasks/Todo_project/TaskManagerAPI/bin/Debug/net9.0/appsettings.secret.json
+/Users/arminjaemaa/Documents/GitHub/toto_personalTasks/Todo_project/TaskManagerAPI/bin/Debug/net9.0/appsettings.Secrets.json
