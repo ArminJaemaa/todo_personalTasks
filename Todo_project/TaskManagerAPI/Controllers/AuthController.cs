@@ -20,6 +20,7 @@ namespace TaskManagerAPI.Controllers
             _jwtService = jwtService;
         }
 
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
@@ -29,6 +30,7 @@ namespace TaskManagerAPI.Controllers
             return Ok(new { user.Id });
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginModel model)
         {
