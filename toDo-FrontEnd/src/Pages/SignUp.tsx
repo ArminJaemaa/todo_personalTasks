@@ -1,11 +1,13 @@
 import { FormEvent, useState } from 'react';
 import axios from 'axios';
 import BackButton from '../Components/Tagasi';
+import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -16,6 +18,7 @@ function SignUp() {
       });
       console.log('Registration successful:', response.data);
       alert('User registered successfully!');
+      navigate('/login')
     } catch (err) {
       setError('Registration failed. Username may already exist.');
       console.error(err);

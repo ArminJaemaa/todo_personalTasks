@@ -1,6 +1,8 @@
 
 
+
 function MainPage() {
+
   return (
     <>
     <h1>Todo project</h1>

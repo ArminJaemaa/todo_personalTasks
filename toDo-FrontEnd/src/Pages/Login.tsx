@@ -1,13 +1,18 @@
 import { FormEvent, useState } from "react"
 import BackButton from "../Components/Tagasi"
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contex/AuthContext";
 
 function Login() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [token, setToken] = useState('');
+
+  const {login} = useAuth();
+
+  const navigate = useNavigate();
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
@@ -16,11 +21,13 @@ function Login() {
         username, password
       });
       const recivedToken = response.data.token;
-      setToken(recivedToken);
       localStorage.setItem('JwtToken', recivedToken);
-      alert('Login successful');
+      login(recivedToken); // update context
+      navigate('/dashboard');
+      
     } catch (err){
       setError('Invalid username or password')
+      alert('Wrong username or password')
       console.log(err);
     }
   };
@@ -57,11 +64,6 @@ function Login() {
         </div>
         <button type="submit" className="btn btn-success">Login</button>
       </form>
-      {token && (
-        <div className="mt-3 alert alert-success">
-          Token received. You are logged in!
-        </div>
-      )}
     </>
   )
 }
