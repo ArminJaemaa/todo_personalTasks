@@ -1,14 +1,18 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { useAuth } from '../context/AuthContext';
 
 const BackButton = () => {
       const navigate = useNavigate();
+      const {isLoggedIn} = useAuth();
+
+
   return (
     <div className='backButton'>
     <StyledWrapper>
       <div className="styled-wrapper">
         <button className="button" onClick={()=>{
-          if (window.history.length > 1) {
+          if ((window.history.length > 1) && isLoggedIn) {
             navigate(-1);
           } else {
             navigate('/');

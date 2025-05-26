@@ -23,7 +23,7 @@ namespace TaskManagerAPI.Controllers
         private int GetUserId() =>
             int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        [HttpGet]
+        [HttpGet("tasks")]
         public async Task<ActionResult<IEnumerable<TaskItem>>> GetTasks()
         {
             var userId = GetUserId();
@@ -34,7 +34,7 @@ namespace TaskManagerAPI.Controllers
             return Ok(tasks);
         }
 
-        [HttpPost]
+        [HttpPost ("add-task")]
         public async Task<ActionResult<TaskItem>> CreateTask(TaskItem task)
         {
             task.UserId = GetUserId();
@@ -43,7 +43,7 @@ namespace TaskManagerAPI.Controllers
             return CreatedAtAction(nameof(GetTasks), new { id = task.Id }, task);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("edit-task/{id}")]
         public async Task<IActionResult> UpdateTask(int id, TaskItem updatedTask)
         {
             var userId = GetUserId();
@@ -60,7 +60,7 @@ namespace TaskManagerAPI.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("delete-task/{id}")]
         public async Task<IActionResult> DeleteTask(int id)
         {
             var userId = GetUserId();

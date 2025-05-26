@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #a59696;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -30,18 +30,22 @@ body {
 }
 
 h1 {
+  position: absolute;
+  top: 10%;
   font-size: 3.2em;
   line-height: 1.1;
+  margin: auto;
 }
 
 button {
+  color: rgb(0, 0, 0);
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #ffffff;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -50,5 +54,31 @@ button:hover {
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto;
+}
+
+.show-tasks{
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  border: solid rgb(164, 104, 104);
+}
+
+.task-form{
+  position: absolute;
+  top: 10%;
+  left: 4%;
+}
+
+.tasks-list{
+  display: flex;
+  align-items: center;
+}
+
+h2 {
+  position: absolute;
+  top: 10%;
+  font-size: 2.2em;
+  line-height: 1.1;
+  margin: 100px auto;
 }
