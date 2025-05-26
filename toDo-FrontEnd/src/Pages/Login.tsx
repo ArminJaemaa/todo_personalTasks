@@ -1,8 +1,8 @@
 import { FormEvent, useState } from "react"
-import BackButton from "../Components/Tagasi"
+import BackButton from "../components/Tagasi"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contex/AuthContext";
+import { useAuth } from "../context/AuthContext";
 
 function Login() {
 

@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
 import axios from 'axios';
-import BackButton from '../Components/Tagasi';
+import BackButton from '../components/Tagasi';
 import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
