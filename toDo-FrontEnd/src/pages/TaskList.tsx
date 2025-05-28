@@ -5,7 +5,7 @@ import {
   updateTask,
   deleteTask,
 } from '../services/TaskService';
-import TaskForm from './TaskForm';
+import TaskForm from '../components/TaskForm';
 import { Task } from '../models/TaskModel';
 
 
