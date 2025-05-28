@@ -73,12 +73,13 @@ function TaskList() {
             <ul>
                 {filteredTasks.map((task) => (
                 <li key={task.id} className='tasks-list'>
-                    <input
-                    type="checkbox"
-                    checked={task.isComplete}
-                    onChange={() => toggleComplete(task)}
-                    />
                     <strong>{task.title}</strong> – {task.description}
+                    <input
+                        id='done-button'
+                        type="checkbox"
+                        checked={task.isComplete}
+                        onChange={() => toggleComplete(task)}
+                    />
                     <button onClick={() => setEditingTask(task)}>Edit</button>
                     <button onClick={() => handleDelete(task.id)}>Delete</button>
                 </li>

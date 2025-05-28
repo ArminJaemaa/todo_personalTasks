@@ -40,8 +40,9 @@ h1 {
 button {
   color: rgb(0, 0, 0);
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid black;
   padding: 0.6em 1.2em;
+  margin: 10px;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -61,7 +62,6 @@ button:focus-visible {
   position: absolute;
   top: 10%;
   right: 5%;
-  border: solid rgb(164, 104, 104);
 }
 
 .task-form{
@@ -81,4 +81,9 @@ h2 {
   font-size: 2.2em;
   line-height: 1.1;
   margin: 100px auto;
+}
+
+#done-button{
+  margin-left: 10px;
+  margin-right: 10px;
 }
