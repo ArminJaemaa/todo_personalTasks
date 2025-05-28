@@ -6,7 +6,7 @@ import SignUp from './pages/SignUp'
 import Login from './pages/Login'
 import ProfilePage from './pages/ProfilePage'
 import PrivateRoute from './components/PrivateRoute'
-import TaskList from './components/TaskList'
+import TaskList from './pages/TaskList'
 
 function App() {
 
