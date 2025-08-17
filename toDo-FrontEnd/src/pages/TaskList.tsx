@@ -62,6 +62,7 @@ function TaskList() {
 
             <TaskForm
                 onSubmit={editingTask ? handleUpdate : handleCreate}
+                onCancel={() => setEditingTask(null)}
                 editingTask={editingTask}
             />
             <div style={{ display: 'flex', justifyContent: 'flex-end' }} className='show-tasks'>
