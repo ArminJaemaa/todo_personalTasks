@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 
 interface Props {
   onSubmit: (task: any) => void;
+  onCancel: () => void;
   editingTask?: any | null;
 }
 
-function TaskForm({ onSubmit, editingTask }: Props) {
+function TaskForm({ onSubmit, onCancel, editingTask }: Props) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
@@ -13,6 +14,9 @@ function TaskForm({ onSubmit, editingTask }: Props) {
     if (editingTask) {
       setTitle(editingTask.title);
       setDescription(editingTask.description);
+    } else {
+      setTitle('');
+      setDescription('');
     }
   }, [editingTask]);
 
@@ -25,6 +29,13 @@ function TaskForm({ onSubmit, editingTask }: Props) {
       setTitle('');
       setDescription('');
     }
+  };
+
+  const handleCancel = () => {
+    setTitle('');
+    setDescription('');
+    // tell parent to stop editing
+    onCancel?.();
   };
 
   return (
@@ -43,8 +54,13 @@ function TaskForm({ onSubmit, editingTask }: Props) {
       />
       <br />
       <button type="submit">
-        {editingTask ? 'Update Task' : 'Create Task'}
+        {editingTask ? 'save' : 'Create Task'}
       </button>
+      { editingTask && (
+        <button type="button" onClick={handleCancel}>
+          cancel
+        </button>
+      )}
     </form>
   );
 }
